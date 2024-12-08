@@ -11,10 +11,11 @@
 {{ end }}
 {{ end }}
 
-<!-- Weather have featured image in front matter -->
+<!-- Check if featuredImage is in the front matter -->
 {{ with $page.Params.featuredImage }}
-{{ $image := . | absURL }}
+    {{ $image = . | absURL }}  <!-- Directly assign to $image -->
 {{ end }}
+
 
 {{ if eq $image "" }}
 <!-- Local image eg: ./abc.jpeg or /abc.png -->

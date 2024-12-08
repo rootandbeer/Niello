@@ -10,7 +10,7 @@
         {{ i18n "intro" }}
     </div>
 
-    <img src="/image/logo.webp?v={{ now.Unix }}" class="w-80 self-center" alt="Logo" />
+    <img src="/image/bear_logo.webp?v={{ now.Unix }}" class="w-80 self-center" alt="Logo" />
 
     <p class="leading-8 text-center text-lg font-light mt-3">
         {{ i18n "slogan" }}
@@ -107,18 +107,12 @@
         {{ i18n "archive" }}
     </div>
     <ul class="leading-10 text-lg font-light">
-        {{ $fmt := "Jan, 2006" }}
-        {{ if eq $.Site.Language.Lang "zh" }}
-        {{ $fmt = "2006年01月" }}
-        {{ end }}
-        {{ with $archives := .Site.RegularPages.GroupByDate $fmt "desc" }}
+        {{ with $archives := .Site.RegularPages.GroupByDate "2006-01" "desc" }}
         {{ $sortedArchives := sort $archives ".Key" "desc" }}
         {{ range $index, $item := $sortedArchives }}
-        {{ if lt $index 18 }}
+        {{ if lt $index 36 }}
         <li class="mb-1 border-b border-b-white/10 border-dashed">
-            <a href="/{{ $.Site.Language.Lang }}/archives">{{ $item.Key }}<span
-                    class="ml-2 px-2 bg-gray-800 rounded-full text-gray-500">{{
-                    $item.Pages.Len}}</span></a>
+            {{ $item.Key }}<span class="ml-2 px-2 bg-gray-800 rounded-full text-gray-500">{{ $item.Pages.Len}}</span>
         </li>
         {{ end }}
         {{ end }}
@@ -139,6 +133,6 @@
         {{ i18n "contact"}}
     </div>
     <div class="flex flex-row gap-2">
-        Email：angularcorp@outlook.com
+        Email：contact@pacifichackers.org
     </div>
 </aside>
